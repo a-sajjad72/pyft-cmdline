@@ -1,0 +1,3 @@
+[submodule "pyft"]
+	path = pyft
+	url = https://github.com/a-sajjad72/pyft.git
