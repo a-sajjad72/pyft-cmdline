@@ -117,7 +117,8 @@ positional arguments:
 
 options:
   -h, --help         show this help message and exit
-  --address ADDRESS  Address of the receiver. [Required]
+  --address ADDRESS  Address of the receiver "ip[:port]". if
+                     port not specified it default to 9999
 ```
 
 ### recv subcommand

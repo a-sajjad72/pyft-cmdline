@@ -5,7 +5,7 @@ import pathlib
 import os
 from sys import exit
 
-__version__ = "2023.7.19"
+__version__ = "2023.7.23"
 
 if __name__ == "__main__":
     # Create the main parser
@@ -30,7 +30,7 @@ if __name__ == "__main__":
         help="Path(s) to the file(s) you want to send",
     )
     send_parser.add_argument(
-        "--address", type=str, required=True, help="Address of the receiver. [Required]"
+        "--address", type=str, required=True, help="Address of the receiver \"ip:[port]\". if port not specified it default to 9999"
     )
     # Create the parser for the "receive" subcommand
     receive_parser = subparsers.add_parser("recv", help="Receive files")
@@ -47,7 +47,8 @@ if __name__ == "__main__":
 
     # Accessing the subcommand and arguments
     if args.subcommand == "send":
-        ip, port = args.address.split(":")
+        print(args.subcommand)
+        ip, port = args.address.split(":") if ':' in args.address else args.address,None
         # checking provided path(s) is valid
         for x in args.file:
             if os.path.exists(str(x)):
@@ -59,7 +60,10 @@ if __name__ == "__main__":
                 print(f'ERROR: "{x}" not exists')
                 exit()
 
-        sender.Sender(ip, int(port), args.file)
+        if port is None:
+            sender.Sender(ip, 9999, args.file)
+        else:
+            sender.Sender(ip,  int(port), args.file)
         exit()
 
     elif args.subcommand == "recv":
