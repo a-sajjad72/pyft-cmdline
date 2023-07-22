@@ -80,7 +80,7 @@ python -m pip install -r requirements.txt
 **_NOTE:_** We are using [Pyinstaller](https://github.com/pyinstaller/pyinstaller) to build release for our platform. The thing to noted is that Pyinstaller doesn't support cross-compilation which means that we can't build a release for Linux or MacOS on Windows and vice versa.
 
 ```
-python -m pyinstaller options.py -n pyft-cmdline --onefile
+pyinstaller options.py -n pyft-cmdline --onefile
 ```
 
 After executing the above command wait for a while and you'll get your standalone executable in the `dist` folder in the root of your repo.
