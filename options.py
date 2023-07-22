@@ -3,6 +3,7 @@ import send as sender
 import argparse
 import pathlib
 import os
+from sys import exit
 
 __version__ = "2023.7.19"
 
@@ -59,7 +60,7 @@ if __name__ == "__main__":
                 exit()
 
         sender.Sender(ip, int(port), args.file)
-        quit()
+        exit()
 
     elif args.subcommand == "recv":
         if args.path:
