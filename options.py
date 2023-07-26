@@ -47,8 +47,7 @@ if __name__ == "__main__":
 
     # Accessing the subcommand and arguments
     if args.subcommand == "send":
-        print(args.subcommand)
-        ip, port = args.address.split(":") if ':' in args.address else args.address,None
+        ip, port = args.address.split(":") if ':' in args.address else (args.address,None)
         # checking provided path(s) is valid
         for x in args.file:
             if os.path.exists(str(x)):
