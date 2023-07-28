@@ -4,8 +4,9 @@ import argparse
 import pathlib
 import os
 from sys import exit
+from version import get_version
 
-__version__ = "2023.7.23"
+__version__ = get_version()
 
 if __name__ == "__main__":
     # Create the main parser
