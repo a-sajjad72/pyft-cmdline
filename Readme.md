@@ -27,10 +27,10 @@ You can install pyft-cmdline using the below release files
 
 | File                     | Description                            |
 | :----------------------- | :------------------------------------- |
-| [pyft-cmdline.exe](https://github.com/a-sajjad72/pyft-cmdline/releases/download/2023.7.23/pyft-cmdline.exe)     | Windows standalone x64 binary          |
-| [pyft-cmdline_x86.exe](https://github.com/a-sajjad72/pyft-cmdline/releases/download/2023.7.23/pyft-cmdline_x86.exe) | Windows standalone x86 (32-bit) binary |
-
-**_NOTE:_** Currently only windows releases are available. You can build it for your OS. It's really easy. See the section below about [building from source](#build-from-source)
+| [pyft-cmdline.exe](https://github.com/a-sajjad72/pyft-cmdline/releases/latest/download/pyft-cmdline.exe)     | Windows standalone x64 binary          |
+| [pyft-cmdline_x86.exe](https://github.com/a-sajjad72/pyft-cmdline/releases/latest/download/pyft-cmdline_x86.exe) | Windows standalone x86 (32-bit) binary |
+|[pyft-cmdline_macos](https://github.com/a-sajjad72/pyft-cmdline/releases/latest/download/pyft-cmdline_macos)||
+**_NOTE:_** Currently only windows and macos releases are available. You can build it for your OS. It's really easy. See the section below about [building from source](#build-from-source)
 
 ## BUILD FROM SOURCE
 
