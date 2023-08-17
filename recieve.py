@@ -39,4 +39,5 @@ class Reciever(Server):
             filename = ft.recv_file(self.path)
 
 if __name__ == "__main__":
-    recieve = Reciever()
+    ip = input('enter your public ip address: ')
+    recieve = Reciever(ip)
