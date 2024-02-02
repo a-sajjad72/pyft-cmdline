@@ -4,9 +4,7 @@ import argparse
 import pathlib
 import os
 from sys import exit
-from version import get_version
-
-__version__ = get_version()
+from version import __version__
 
 if __name__ == "__main__":
     # Create the main parser
@@ -18,7 +16,8 @@ if __name__ == "__main__":
     parser.add_argument("-V", "--version", action="version", version=f"{__version__}")
 
     # Create subparsers for send and receive
-    subparsers = parser.add_subparsers(dest="subcommand", description="Available subcommands"
+    subparsers = parser.add_subparsers(
+        dest="subcommand", description="Available subcommands"
     )
 
     # Create the parser for the "send" subcommand
@@ -31,7 +30,10 @@ if __name__ == "__main__":
         help="Path(s) to the file(s) you want to send",
     )
     send_parser.add_argument(
-        "--address", type=str, required=True, help="Address of the receiver \"ip:[port]\". if port not specified it default to 9999"
+        "--address",
+        type=str,
+        required=True,
+        help='Address of the receiver "ip:[port]". if port not specified it default to 9999',
     )
     # Create the parser for the "receive" subcommand
     receive_parser = subparsers.add_parser("recv", help="Receive files")
@@ -42,13 +44,21 @@ if __name__ == "__main__":
         type=pathlib.Path,
         help="Use custom directory path to save received files. Default to current working directory",
     )
+    receive_parser.add_argument(
+        "--address",
+        type=str,
+        required=False,
+        help='Assign an address to recieve on "ip:[port]". if port not specified it default to 9999',
+    )
 
     # Parse the command line arguments
     args = parser.parse_args()
 
     # Accessing the subcommand and arguments
     if args.subcommand == "send":
-        ip, port = args.address.split(":") if ':' in args.address else (args.address,None)
+        ip, port = (
+            args.address.split(":") if ":" in args.address else (args.address, None)
+        )
         # checking provided path(s) is valid
         for x in args.file:
             if os.path.exists(str(x)):
@@ -63,14 +73,17 @@ if __name__ == "__main__":
         if port is None:
             sender.Sender(ip, 9999, args.file)
         else:
-            sender.Sender(ip,  int(port), args.file)
+            sender.Sender(ip, int(port), args.file)
         exit()
 
     elif args.subcommand == "recv":
-        if args.path:
-            receiver.Reciever(path=args.path)
+        if args.address:
+            ip, port = (
+            args.address.split(":") if ":" in args.address else (args.address, None)
+        )
+            receiver.Reciever(host=ip, port=port, path=args.path)
         else:
-            receiver.Reciever()
+            receiver.Reciever(path=args.path)
         exit()
 
     else:
